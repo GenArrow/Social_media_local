@@ -114,4 +114,19 @@ public class RepositoryDbPrietenie implements Repository<Tuple<Long, Long>, Prie
         }
     }
 
+    @Override
+    public void registerUser(Prietenie entity, String u, String p, String s) {
+
+    }
+
+    @Override
+    public int validateLogin(String u, String p) {
+        return 0;
+    }
+
+    @Override
+    public Prietenie findByUser_Name(String u) {
+        return null;
+    }
+
 }

@@ -19,6 +19,12 @@ public class UtilizatorService {
 
     }
 
+    public void registerUser(Utilizator entity, String user_name, String parola, String salt) {repo.registerUser(entity, user_name, parola, salt);}
+
+    public int validateLogin(String user_name, String parola) {return repo.validateLogin(user_name, parola);}
+
+    public Utilizator findByUser_Name(String user_name) {return repo.findByUser_Name(user_name);}
+
     public void updateUtilizator(Utilizator utilizator) {
         repo.update(utilizator);
     }

@@ -20,9 +20,8 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Login.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
         stage.setScene(scene);
         stage.show();
     }
@@ -53,5 +52,11 @@ public class Main extends Application {
         Console console = new Console(utilizatorService, prietenieService, utilizatoriPrieteniiService, mesajService, cererePrietenieService);
         console.run_utilizator_menu();
         //launch();
+
+
+            // Registering
+        //utilizatorService.addUtilizator(new Utilizator("Andrei", "Bob"));
+        //utilizatorService.registerUser(utilizatorService.findByName("Andrei", "Bob"), "handibandi", "yeet", "testsalt");
+
     }
 }

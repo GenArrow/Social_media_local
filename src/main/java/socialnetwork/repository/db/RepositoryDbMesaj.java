@@ -137,5 +137,20 @@ public class RepositoryDbMesaj implements Repository<Long, Mesaj> {
         }
     }
 
+    @Override
+    public void registerUser(Mesaj entity, String u, String p, String s) {
+
+    }
+
+    @Override
+    public int validateLogin(String u, String p) {
+        return 0;
+    }
+
+    @Override
+    public Mesaj findByUser_Name(String u) {
+        return null;
+    }
+
 }
 

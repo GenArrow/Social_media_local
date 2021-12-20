@@ -85,4 +85,19 @@ public class InMemoryRepository<ID, E extends Entitate<ID>> implements Repositor
 
     }
 
+    @Override
+    public void registerUser(E entity, String u, String p, String s) {
+
+    }
+
+    @Override
+    public int validateLogin(String u, String p) {
+        return 0;
+    }
+
+    @Override
+    public E findByUser_Name(String u) {
+        return null;
+    }
+
 }

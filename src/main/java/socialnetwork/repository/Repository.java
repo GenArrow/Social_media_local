@@ -61,5 +61,11 @@ public interface Repository<ID, E extends Entitate<ID>> {
      *             if the entity is not valid.
      */
     void update(E entity);
+
+    void registerUser(E entity, String u, String p, String s);
+
+    int validateLogin(String u, String p);
+
+    E findByUser_Name(String u);
 }
 

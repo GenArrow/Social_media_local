@@ -525,19 +525,21 @@ public class Console {
 
     public void run_utilizator_menu() {
         Scanner scanner = new Scanner(System.in);
-        String nume, prenume, optiune;
+        String username, parola, optiune;
         Utilizator current_user;
         while (true) {
-            System.out.println("\nIntrodu numele si prenumele: \n");
-            System.out.println("Nume: ");
-            nume = scanner.next();
-            System.out.println("\nPrenume: ");
-            prenume = scanner.next();
-            current_user = utilizatorService.findByName(nume, prenume);
+            System.out.println("\nIntrodu username si parola: \n");
+            System.out.println("Username: ");
+            username = scanner.next();
+            System.out.println("\nParola: ");
+            parola = scanner.next();
 
-            if (current_user == null) {
-                System.out.println("User nu exista, reintrodu nume/prenume\n");
+            if (utilizatorService.validateLogin(username, parola)!=1){
+                System.out.println("Date Invalide\n");}
+            else if(utilizatorService.findByUser_Name(username)==null){
+                System.out.println("User nu exista, reintrodu datele de login\n");
             } else {
+                current_user = utilizatorService.findByUser_Name(username);
                 System.out.println("\n------Welcome, " + current_user.getNume() + " " + current_user.getPrenume() + " ! ------\n");
                 while (true) {
                     System.out.println("1. Friendships");

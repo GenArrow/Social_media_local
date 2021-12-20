@@ -96,4 +96,19 @@ public class RepositoryDbCerere implements Repository<Tuple<Long, Long>, Cerere>
     public void update(Cerere entity) {
 
     }
+
+    @Override
+    public void registerUser(Cerere entity, String u, String p, String s) {
+
+    }
+
+    @Override
+    public int validateLogin(String u, String p) {
+        return 0;
+    }
+
+    @Override
+    public Cerere findByUser_Name(String u) {
+        return null;
+    }
 }
