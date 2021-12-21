@@ -3,6 +3,7 @@ package socialnetwork;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import socialnetwork.config.ApplicationContext;
 import socialnetwork.domain.*;
@@ -16,17 +17,18 @@ import socialnetwork.service.*;
 import socialnetwork.ui.Console;
 
 import java.io.IOException;
+import java.util.Objects;
 
-public class Main extends Application {
-    @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1080, 720);
-        stage.setScene(scene);
-        stage.show();
+import static javafx.application.Application.launch;
+
+public class Main extends Application{
+
+    public void start(Stage stage) throws Exception {
+        loginController lC = new loginController();
+        lC.start(new Stage());
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         final String url = ApplicationContext.getPROPERTIES().getProperty("data.socialnetwork.url");
         final String username = ApplicationContext.getPROPERTIES().getProperty("data.socialnetwork.username");
         final String password = ApplicationContext.getPROPERTIES().getProperty("data.socialnetwork.password");
@@ -49,9 +51,15 @@ public class Main extends Application {
         MesajService mesajService = new MesajService(mesajDbRepository);
         CererePrietenieService cererePrietenieService = new CererePrietenieService(cerereDbRepository, prietenieService);
 
-        Console console = new Console(utilizatorService, prietenieService, utilizatoriPrieteniiService, mesajService, cererePrietenieService);
-        console.run_utilizator_menu();
-        //launch();
+        //Console console = new Console(utilizatorService, prietenieService, utilizatoriPrieteniiService, mesajService, cererePrietenieService);
+        //console.run_utilizator_menu();
+        loginController.utilizatorService=utilizatorService;
+        loginController.utilizatoriPrieteniiService=utilizatoriPrieteniiService;
+        loginController.cererePrietenieService=cererePrietenieService;
+        loginController.mesajService=mesajService;
+        loginController.prietenieService=prietenieService;
+        launch();
+
 
 
             // Registering

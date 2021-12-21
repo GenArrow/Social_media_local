@@ -10,6 +10,7 @@ module com.example.extended {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires java.sql;
+    requires com.jfoenix;
 
     opens socialnetwork to javafx.fxml;
     exports socialnetwork;
