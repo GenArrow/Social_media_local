@@ -3,6 +3,7 @@ package socialnetwork;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.controlsfx.control.Notifications;
 import socialnetwork.domain.Utilizator;
@@ -16,8 +17,8 @@ public class registerController {
     public Button SignUpProceedButton;
     public TextField SignUpNume;
     public TextField SignUpPrenume;
-    public TextField SignUpParola;
     public TextField SignUpUsername;
+    public PasswordField SignUpParola;
 
     public void OnSignUpProceedButtonClick() throws NoSuchAlgorithmException {
         String nume = SignUpNume.getText();
