@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -25,13 +26,14 @@ public class loginController extends Application {
     public JFXDrawer drawer;
     public Button LoginButton;
     public TextField LoginUsername;
-    public TextField LoginPassword;
+    public PasswordField LoginPassword;
     public Utilizator current_user;
     public static UtilizatorService utilizatorService;
     public static PrietenieService prietenieService;
     public static UtilizatoriPrieteniiService utilizatoriPrieteniiService;
     public static MesajService mesajService;
     public static CererePrietenieService cererePrietenieService;
+
 
     public loginController(){}
 
