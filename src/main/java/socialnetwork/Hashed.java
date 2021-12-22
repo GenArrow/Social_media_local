@@ -63,7 +63,7 @@ public class Hashed {
         return generatedPassword;
     }
 
-    private static String getSalt() throws NoSuchAlgorithmException {
+    public static String getSalt() throws NoSuchAlgorithmException {
         int leftLimit = 48; // numeral '0'
         int rightLimit = 122; // letter 'z'
         int targetStringLength = 10;

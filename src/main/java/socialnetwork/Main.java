@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import socialnetwork.config.ApplicationContext;
 import socialnetwork.domain.*;
@@ -61,10 +62,10 @@ public class Main extends Application{
         launch();
 
 
-
-            // Registering
-        //utilizatorService.addUtilizator(new Utilizator("Andrei", "Bob"));
-        //utilizatorService.registerUser(utilizatorService.findByName("Andrei", "Bob"), "handibandi", "yeet", "testsalt");
+//        VBox vbox = new VBox();
+//        vbox.setAccessibleText("aaa");
+//        vbox.setOnMouseClicked((e)-> System.out.println("lmao"));
+//        anchorPane.getChildren().add(vbox);
 
     }
 }

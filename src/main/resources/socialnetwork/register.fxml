@@ -38,7 +38,7 @@
             <Font size="22.0" />
          </font>
       </TextField>
-      <Button fx:id="SignUpProceedButton" layoutX="702.0" layoutY="260.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="84.0" text="Proceed">
+      <Button fx:id="SignUpProceedButton" layoutX="702.0" layoutY="260.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="84.0" text="Proceed" onAction="#OnSignUpProceedButtonClick">
          <font>
             <Font size="17.0" />
          </font>
