@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #484848;"
+            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"            fx:controller="socialnetwork.MeniuController">
+    <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#d3d3d3" height="55.0" layoutX="208.0" layoutY="15.0"
+               stroke="LIGHTGRAY" width="383.0"/>
+    <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="616.0" layoutY="9.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@../ICON/bell.png"/>
+    </ImageView>
+    <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="91.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../ICON/dungi.png"/>
+    </ImageView>
+    <ImageView fitHeight="70.0" fitWidth="70.0" layoutX="698.0" layoutY="9.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@../ICON/msg.png"/>
+    </ImageView>
+    <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="534.0" layoutY="23.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="@../ICON/Loup.png"/>
+    </ImageView>
+    <TextField layoutX="221.0" layoutY="17.0" prefHeight="40.0" prefWidth="307.0" style="-fx-background-color: #d3d3d3;">
+        <font>
+            <Font size="23.0"/>
+        </font>
+    </TextField>
+</AnchorPane>
