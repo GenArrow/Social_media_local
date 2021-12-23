@@ -3,3 +3,4 @@ Extended.iml
 pom.xml
 target/
 proiectext.iml
+resources/config.properties

@@ -1,10 +1,6 @@
 package socialnetwork;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import socialnetwork.config.ApplicationContext;
 import socialnetwork.domain.*;
@@ -15,12 +11,8 @@ import socialnetwork.repository.db.RepositoryDbMesaj;
 import socialnetwork.repository.db.RepositoryDbPrietenie;
 import socialnetwork.repository.db.RepositoryDbUtilizator;
 import socialnetwork.service.*;
-import socialnetwork.ui.Console;
 
 import java.io.IOException;
-import java.util.Objects;
-
-import static javafx.application.Application.launch;
 
 public class Main extends Application{
 
@@ -60,12 +52,6 @@ public class Main extends Application{
         loginController.mesajService=mesajService;
         loginController.prietenieService=prietenieService;
         launch();
-
-
-//        VBox vbox = new VBox();
-//        vbox.setAccessibleText("aaa");
-//        vbox.setOnMouseClicked((e)-> System.out.println("lmao"));
-//        anchorPane.getChildren().add(vbox);
 
     }
 }
