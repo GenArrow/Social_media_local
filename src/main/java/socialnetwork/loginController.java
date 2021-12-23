@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import org.controlsfx.control.Notifications;
 import socialnetwork.domain.Utilizator;
 import socialnetwork.service.*;
@@ -33,9 +34,11 @@ public class loginController extends Application {
     public static UtilizatoriPrieteniiService utilizatoriPrieteniiService;
     public static MesajService mesajService;
     public static CererePrietenieService cererePrietenieService;
-
+    public AnchorPane Anchorpane;
 
     public loginController(){}
+
+    Stage stage;
 
     @FXML
     public void onRegisterButtonClick() throws IOException {
@@ -56,7 +59,7 @@ public class loginController extends Application {
         stage.show();
     }
 
-    public void onLoginButtonClick() {
+    public void onLoginButtonClick() throws IOException {
         String username = LoginUsername.getText();
         String parola = LoginPassword.getText();
         if (utilizatorService.validateLogin(username, parola)!=1){
@@ -64,7 +67,11 @@ public class loginController extends Application {
         else if(utilizatorService.findByUser_Name(username)==null){
             Notifications.create().title("Invalid data").text("Invalid username and/or password, try again").showError();}
         else{current_user=utilizatorService.findByUser_Name(username);
-            Notifications.create().title("Welcome").text("Welcome, " + current_user.getNume() + " " + current_user.getPrenume() + " !").showConfirm();}
-
+            stage = (Stage) Anchorpane.getScene().getWindow();
+            stage.close();
+            MeniuController mC = new MeniuController();
+            mC.start(new Stage());
+            Notifications.create().title("Welcome").text("Welcome, " + current_user.getNume() + " " + current_user.getPrenume() + " !").showConfirm();
+        }
     }
 }
