@@ -45,7 +45,7 @@ public class MesajService {
 
         for(Mesaj mesaj : listaMesaje)
         {
-            detalii_mesaj.add("From: " + mesaj.getSender().getNume() + " Saying: " + '"' + mesaj.getMesaj() + '"' + " to " + mesaj.getRecieveri().get(0).getNume());
+            detalii_mesaj.add("From: " + mesaj.getSender().getNume() + " to " + mesaj.getRecieveri().get(0).getNume() + "  Saying: " + '"' + mesaj.getMesaj() + '"');
         }
         return detalii_mesaj;
     }

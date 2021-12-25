@@ -412,7 +412,7 @@ public class Console {
             System.out.println("6. Delete a friend request you sent");
             System.out.println("7. Accept / Decline incoming requests");
             System.out.println("8. See all your sent requests");
-            System.out.println("9. See all your recieved requests");
+            System.out.println("9. See all your recieved requests");//
             System.out.println("b. Back");
 
             System.out.println("Optiune ");

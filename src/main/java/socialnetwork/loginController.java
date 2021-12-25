@@ -69,8 +69,11 @@ public class loginController extends Application {
         else{current_user=utilizatorService.findByUser_Name(username);
             stage = (Stage) Anchorpane.getScene().getWindow();
             stage.close();
-            MeniuController mC = new MeniuController();
-            mC.start(new Stage());
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("meniu.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+            stage.setScene(scene);
+            stage.show();
+            MeniuController.current_user=current_user;
             Notifications.create().title("Welcome").text("Welcome, " + current_user.getNume() + " " + current_user.getPrenume() + " !").showConfirm();
         }
     }
