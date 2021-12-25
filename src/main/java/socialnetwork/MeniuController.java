@@ -45,6 +45,8 @@ public class MeniuController implements Initializable {
     public TableView user_table;
     public TableColumn<Utilizator, String> NameColumn;
     public TableColumn<Utilizator, String> SurnameColumn;
+    public AnchorPane AnchorPaneMenu;
+    public Button LogoutButton;
 
     public MeniuController(){}
 
@@ -73,7 +75,8 @@ public class MeniuController implements Initializable {
         SurnameColumn.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getPrenume()));
         Predicate<Utilizator> p1 = n -> n.getNume().startsWith(UserSearchField.getText()) && UserSearchField.getText()!="";
         Predicate<Utilizator> p2 = n -> n.getPrenume().startsWith(UserSearchField.getText()) && UserSearchField.getText()!="";
-        ObservableList<Utilizator> lst = FXCollections.observableList(StreamSupport.stream(loginController.utilizatorService.getAll().spliterator(), false).filter(p1.or(p2)).collect(Collectors.toList()));
+        Predicate<Utilizator> p3 = n -> !(n.getNume().equals(current_user.getNume())&&n.getPrenume().equals(current_user.getPrenume()));
+        ObservableList<Utilizator> lst = FXCollections.observableList(StreamSupport.stream(loginController.utilizatorService.getAll().spliterator(), false).filter(p1.or(p2).and(p3)).collect(Collectors.toList()));
         if(lst.isEmpty()){user_table.setVisible(false);}
         else{user_table.setVisible(true); user_table.setItems(lst);}
     }
@@ -117,9 +120,27 @@ public class MeniuController implements Initializable {
         try {
             String[] arrstr = UserSearchField.getText().split(" ");
             if(loginController.utilizatorService.findByName(arrstr[0], arrstr[1])!=null)
-            {System.out.println("Utilizator cu nume " + arrstr[0] + " si prenume " + arrstr[1]);}
+            {stage = (Stage) AnchorPaneMenu.getScene().getWindow();
+                stage.close();
+                UserWindowController.current_user=current_user;
+                UserWindowController.foreign_user=loginController.utilizatorService.findByName(arrstr[0], arrstr[1]);
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("UserWindow.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+                stage.setScene(scene);
+                stage.show();
+            }
         }
         catch (Exception e){}
+    }
+
+    public void OnLogOutButtonClicked(MouseEvent mouseEvent) throws IOException {
+        stage = (Stage) AnchorPaneMenu.getScene().getWindow();
+        stage.close();
+        current_user=null;
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("login.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+        stage.setScene(scene);
+        stage.show();
     }
 }
 
