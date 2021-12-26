@@ -31,11 +31,13 @@ public class DrawMsgController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         TextAreaMsg.appendText("Here are your last messages preview\n\n\n");
         for(Utilizator u : loginController.utilizatorService.getAll()){
-            if(!Objects.equals(u.getId(), current_user.getId())){
-            List<String> lst = loginController.mesajService.Conversation_History(current_user.getId(), u.getId());
-            if(!lst.isEmpty()){
-                String last = lst.get(lst.size()-1);
-                TextAreaMsg.appendText(last + "\n\n");}}}}
+            Thread thread = new Thread(() -> {
+                 String last = loginController.mesajService.Conversation_History_getLast(current_user.getId(), u.getId());
+                 if(!last.isEmpty()){
+                     TextAreaMsg.appendText(last + "\n\n");}});
+                    thread.start();
+        }
+    }
 
     public void OnComposeNewButtonClicked(MouseEvent mouseEvent) throws IOException {
         stage.close();

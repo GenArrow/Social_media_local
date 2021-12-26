@@ -47,7 +47,7 @@ public class MessageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    for(String mesaj : loginController.mesajService.Conversation_History_2(current_user.getId(), foreign_user.getId())){MessageArea.appendText(mesaj);}}
+    loginController.mesajService.Conversation_History_2(current_user.getId(), foreign_user.getId()).forEach(mesaj -> {MessageArea.appendText(mesaj);});}
 
     public void OnBack2menuClicked(MouseEvent mouseEvent) throws IOException {
         stage = (Stage) AnchorPaneMessage.getScene().getWindow();

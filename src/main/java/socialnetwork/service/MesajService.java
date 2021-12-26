@@ -4,11 +4,9 @@ import socialnetwork.domain.Mesaj;
 import socialnetwork.domain.Tuple;
 import socialnetwork.repository.Repository;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 public class MesajService {
@@ -41,27 +39,32 @@ public class MesajService {
 
     public List<String> Conversation_History(Long id1, Long id2) {
         List<String> detalii_mesaj = new ArrayList<>();
-        List<Mesaj> listaMesaje = StreamSupport.stream(repo.findAll().spliterator(), false).filter(mesaj -> ((Objects.equals(mesaj.getSender().getId(), id1) && Objects.equals(mesaj.getRecieveri().get(0).getId(), id2))
-        || (Objects.equals(mesaj.getSender().getId(), id2) && Objects.equals(mesaj.getRecieveri().get(0).getId(), id1)))).sorted(Comparator.comparing(Mesaj::getData)).collect(Collectors.toList());
+        StreamSupport.stream(repo.findAll().spliterator(), false).filter(mesaj -> ((Objects.equals(mesaj.getSender().getId(), id1) && Objects.equals(mesaj.getRecieveri().get(0).getId(), id2))
+        || (Objects.equals(mesaj.getSender().getId(), id2) && Objects.equals(mesaj.getRecieveri().get(0).getId(), id1)))).sorted(Comparator.comparing(Mesaj::getData)).forEach(mesaj -> {detalii_mesaj.add("From: " + mesaj.getSender().getNume() + " to " + mesaj.getRecieveri().get(0).getNume() + "  Saying: " + '"' + mesaj.getMesaj() + '"');});
 
-        for(Mesaj mesaj : listaMesaje)
-        {
-            detalii_mesaj.add("From: " + mesaj.getSender().getNume() + " to " + mesaj.getRecieveri().get(0).getNume() + "  Saying: " + '"' + mesaj.getMesaj() + '"');
-        }
         return detalii_mesaj;
+    }
+
+    public String Conversation_History_getLast(Long id1, Long id2) {
+        Optional<Mesaj> mesajul = StreamSupport.stream(repo.findAll().spliterator(), false)
+                .filter(mesaj -> ((Objects.equals(mesaj.getSender().getId(), id1) && Objects.equals(mesaj.getRecieveri().get(0).getId(), id2))
+                || (Objects.equals(mesaj.getSender().getId(), id2) && Objects.equals(mesaj.getRecieveri().get(0).getId(), id1))))
+                .sorted(Comparator.comparing(Mesaj::getData))
+                .reduce((first, second) -> second);
+
+        return mesajul.map(mesaj -> "From: " + mesaj.getSender().getNume() + " to " + mesaj.getRecieveri().get(0).getNume() + "  Saying: " + '"' + mesaj.getMesaj() + '"').orElse("");
     }
 
     public List<String> Conversation_History_2(Long id1, Long id2) {
         List<String> detalii_mesaj = new ArrayList<>();
-        List<Mesaj> listaMesaje = StreamSupport.stream(repo.findAll().spliterator(), false).filter(mesaj -> ((Objects.equals(mesaj.getSender().getId(), id1) && Objects.equals(mesaj.getRecieveri().get(0).getId(), id2))
-                || (Objects.equals(mesaj.getSender().getId(), id2) && Objects.equals(mesaj.getRecieveri().get(0).getId(), id1)))).sorted(Comparator.comparing(Mesaj::getData)).collect(Collectors.toList());
+        StreamSupport.stream(repo.findAll().spliterator(), false)
+                .filter(mesaj -> ((Objects.equals(mesaj.getSender().getId(), id1) && Objects.equals(mesaj.getRecieveri().get(0).getId(), id2))
+                || (Objects.equals(mesaj.getSender().getId(), id2) && Objects.equals(mesaj.getRecieveri().get(0).getId(), id1))))
+                .sorted(Comparator.comparing(Mesaj::getData))
+                .forEach(mesaj ->{if(Objects.equals(mesaj.getSender().getId(), id1)){
+                                      detalii_mesaj.add("You: " + mesaj.getMesaj() + "\n");}
+                                 else{detalii_mesaj.add("From " + mesaj.getSender().getNume() + ":  " + mesaj.getMesaj() + "\n");}});
 
-        for(Mesaj mesaj : listaMesaje)
-        {
-            if(Objects.equals(mesaj.getSender().getId(), id1)){
-            detalii_mesaj.add("You: " + mesaj.getMesaj() + "\n");}
-            else{detalii_mesaj.add("From " + mesaj.getSender().getNume() + ":  " + mesaj.getMesaj() + "\n");}
-        }
         return detalii_mesaj;
     }
 
