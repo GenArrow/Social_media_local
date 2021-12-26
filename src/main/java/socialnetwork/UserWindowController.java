@@ -146,4 +146,15 @@ public class UserWindowController implements Initializable {
         else if(Objects.equals(FriendStatusCommand.getText(), "Add friend")){loginController.cererePrietenieService.AdaugaCerere(new Cerere(current_user.getId(), foreign_user.getId(), "pending")); FriendStatusCommand.setText("Cancel req");}
         else if(Objects.equals(FriendStatusCommand.getText(), "Cancel req")){loginController.cererePrietenieService.StergeCerere(new Tuple<>(current_user.getId(), foreign_user.getId())); FriendStatusCommand.setText("Add friend");}
     }
+
+    public void OnSendMessageToUserClicked(MouseEvent mouseEvent) throws IOException {
+        stage = (Stage) AnchorPaneUser.getScene().getWindow();
+        stage.close();
+        MessageController.current_user=current_user;
+        MessageController.foreign_user=foreign_user;
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Message.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

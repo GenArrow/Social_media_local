@@ -1,6 +1,7 @@
 package socialnetwork.service;
 
 import socialnetwork.domain.Mesaj;
+import socialnetwork.domain.Tuple;
 import socialnetwork.repository.Repository;
 
 import java.util.ArrayList;
@@ -49,4 +50,20 @@ public class MesajService {
         }
         return detalii_mesaj;
     }
+
+    public List<String> Conversation_History_2(Long id1, Long id2) {
+        List<String> detalii_mesaj = new ArrayList<>();
+        List<Mesaj> listaMesaje = StreamSupport.stream(repo.findAll().spliterator(), false).filter(mesaj -> ((Objects.equals(mesaj.getSender().getId(), id1) && Objects.equals(mesaj.getRecieveri().get(0).getId(), id2))
+                || (Objects.equals(mesaj.getSender().getId(), id2) && Objects.equals(mesaj.getRecieveri().get(0).getId(), id1)))).sorted(Comparator.comparing(Mesaj::getData)).collect(Collectors.toList());
+
+        for(Mesaj mesaj : listaMesaje)
+        {
+            if(Objects.equals(mesaj.getSender().getId(), id1)){
+            detalii_mesaj.add("You: " + mesaj.getMesaj() + "\n");}
+            else{detalii_mesaj.add("From " + mesaj.getSender().getNume() + ":  " + mesaj.getMesaj() + "\n");}
+        }
+        return detalii_mesaj;
+    }
+
+
 }

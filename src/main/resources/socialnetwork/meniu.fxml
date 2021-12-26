@@ -32,10 +32,10 @@
    </TextField>
    <JFXDrawer fx:id="DrawerMsg" defaultDrawerSize="250.0" direction="RIGHT" layoutX="540.0" layoutY="95.0" prefHeight="480.0" prefWidth="240.0" />
    <JFXDrawer fx:id="DrawerLog" defaultDrawerSize="250.0" layoutX="21.0" layoutY="95.0" prefHeight="480.0" prefWidth="240.0" />
-   <TableView fx:id="user_table" layoutX="221.0" layoutY="76.0" prefHeight="366.0" prefWidth="357.0" style="-fx-background-color: #606060;">
+   <TableView fx:id="user_table" layoutX="221.0" layoutY="76.0" prefHeight="366.0" prefWidth="357.0" style="-fx-background-color: #ebebeb;">
      <columns>
-       <TableColumn fx:id="NameColumn" prefWidth="180.0" style="-fx-background-color: #606060;" text="Name" />
-       <TableColumn fx:id="SurnameColumn" prefWidth="186.0" style="-fx-background-color: #606060;" text="Surname" />
+       <TableColumn fx:id="NameColumn" prefWidth="180.0" style="-fx-background-color: #ebebeb;" text="Name" />
+       <TableColumn fx:id="SurnameColumn" prefWidth="186.0" style="-fx-background-color: #ebebeb;" text="Surname" />
      </columns>
    </TableView>
    <Button fx:id="LogoutButton" layoutX="349.0" layoutY="535.0" mnemonicParsing="false" onMouseClicked="#OnLogOutButtonClicked" prefHeight="40.0" prefWidth="102.0" text="Logout">

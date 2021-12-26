@@ -83,11 +83,13 @@ public class MeniuController implements Initializable {
 
     @FXML
     public void OnMsgImageClick(MouseEvent mouseEvent) throws IOException {
+        DrawMsgController.stage = (Stage) AnchorPaneMenu.getScene().getWindow();
+        DrawMsgController.current_user=current_user;
         if (DrawerMsg.isClosed()) {
             DrawerMsg.setDisable(false);
             DrawMsgController.current_user=current_user;
-            ScrollPane scrollPane = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("DrawMsg.fxml")));
-            DrawerMsg.setSidePane(scrollPane);
+            AnchorPane anchorPane = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("DrawMsg.fxml")));
+            DrawerMsg.setSidePane(anchorPane);
             DrawerMsg.open();}
         else{DrawerMsg.close(); DrawerMsg.setDisable(true);}
     }

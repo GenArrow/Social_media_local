@@ -12,8 +12,6 @@ import socialnetwork.repository.db.RepositoryDbPrietenie;
 import socialnetwork.repository.db.RepositoryDbUtilizator;
 import socialnetwork.service.*;
 
-import java.io.IOException;
-
 public class Main extends Application{
 
     public void start(Stage stage) throws Exception {
@@ -21,7 +19,7 @@ public class Main extends Application{
         lC.start(new Stage());
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         final String url = ApplicationContext.getPROPERTIES().getProperty("data.socialnetwork.url");
         final String username = ApplicationContext.getPROPERTIES().getProperty("data.socialnetwork.username");
         final String password = ApplicationContext.getPROPERTIES().getProperty("data.socialnetwork.password");

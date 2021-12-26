@@ -33,7 +33,7 @@
             <Font size="37.0" />
          </font>
       </Text>
-      <ImageView fx:id="SendMessage" fitHeight="93.0" fitWidth="135.0" layoutX="525.0" layoutY="444.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="SendMessage" fitHeight="93.0" fitWidth="135.0" layoutX="525.0" layoutY="444.0" onMouseClicked="#OnSendMessageToUserClicked" pickOnBounds="true" preserveRatio="true">
          <Image url="@../ICON/sendmsg.jpg" />
       </ImageView>
       <TextField fx:id="NameField" alignment="CENTER" editable="false" layoutX="274.0" layoutY="337.0" prefHeight="40.0" prefWidth="240.0" style="-fx-background-color: #cdcdcd;">
